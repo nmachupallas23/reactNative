@@ -4,6 +4,7 @@ import { StyleSheet, Text, View,Pressable, Image, ScrollView } from 'react-nativ
 import { Button, TouchableHighlight } from 'react-native-web';
 import { getPersonajes } from './lib/rickyMorty';
 import Logo from './components/Logo';
+import { CharacterCard } from './lib/CharacterCard';
 
 export default function App() {
   const [personajes, setPersonajes] = useState([]);
@@ -14,24 +15,15 @@ export default function App() {
     });
   }, []);
   return (
-<ScrollView>
-    <View style={styles.container}>
+
+    <View style={styles.container}>      
       <StatusBar  />
       <Logo style={styles.logo}/>
+      <ScrollView>
       {personajes.map((character) => (
-        <View style={styles.card} key={character.id}>
-          <Text style={styles.status} >{character.name}</Text>
-          <Image
-            source={{ uri: character.image }}
-            style={styles.image}
-            resizeMode="contain"
-          />
-          <Text style={styles.name}>{character.name}</Text>
-          <text style={styles.status}>Status: {character.status}</text>
-          <text style={styles.species}>Species: {character.species}</text>          
-          <text style={styles.gender}>Gender: {character.gender}</text>
-        </View>
+        <CharacterCard character={character} />
       ))}
+      </ScrollView>
       {/* <Image
         source={{ uri: personajes[0]?.image || 'https://reactnative.dev/img/tiny_logo.png' }}
         style={styles.image}
@@ -59,7 +51,7 @@ export default function App() {
       <Text>dasdasd dasda</Text> */}
 
     </View>
-    </ScrollView>
+    
   );
 }
 
@@ -119,7 +111,7 @@ const styles = StyleSheet.create({
   }
 ,
 logo:{
-  backgroundColor: 'green',
+  backgroundColor: 'orange',
   padding: 20,
   width: "60%",
   height: 200,

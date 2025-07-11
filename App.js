@@ -1,10 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { use, useState, useEffect } from 'react';
-import { StyleSheet, Text, View,Pressable, Image, ScrollView } from 'react-native';
-import { Button, TouchableHighlight } from 'react-native-web';
+import { useState, useEffect } from 'react';
+import { StyleSheet, View } from 'react-native';
 import { getPersonajes } from './lib/rickyMorty';
 import Logo from './components/Logo';
-import { CharacterCard } from './lib/CharacterCard';
+import { Main } from './lib/Main';
 
 export default function App() {
   const [personajes, setPersonajes] = useState([]);
@@ -19,37 +18,7 @@ export default function App() {
     <View style={styles.container}>      
       <StatusBar  />
       <Logo style={styles.logo}/>
-      <ScrollView>
-      {personajes.map((character) => (
-        <CharacterCard character={character} />
-      ))}
-      </ScrollView>
-      {/* <Image
-        source={{ uri: personajes[0]?.image || 'https://reactnative.dev/img/tiny_logo.png' }}
-        style={styles.image}
-        resizeMode="contain"
-      />
-      <Text>dasdasd dasda</Text>
-      <Text>Open up App.js to start working on your app!</Text>
-
-      <Button
-        title="Click Me"
-        color='#841584'
-        onPress={() => alert('Button Pressed!')}
-      />
-      <Pressable onPress={() => console.log('¡Botón presionado!')}>
-        <Text>Presióname</Text>
-      </Pressable>
-
-      <Image
-        source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
-        style={styles.image}
-        resizeMode="contain"
-      />
-
-
-      <Text>dasdasd dasda</Text> */}
-
+      <Main />           
     </View>
     
   );
